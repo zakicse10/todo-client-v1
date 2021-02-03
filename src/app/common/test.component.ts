@@ -8,6 +8,6 @@ export class TestComponent {
     datetime: string;
 
     refreshDateTime() {
-        this.datetime = new Date().toString();
+        this.datetime = new Date().toLocaleString();
     }
 }
