@@ -1,9 +1,15 @@
-<div class="container">
+<div class="card bg-light d-inline-block">
+    <div class="card-header">
+        This is a test component
+    </div>
     <div class="card-body">
         <span>The date time: {{datetime}}</span>
         <div>
             <button class="btn btn-info" (click)='refreshDateTime()'>Refresh</button>
-        </div>        
+        </div>
+        <div>
+            <input type="text" [(ngModel)]='datetime'>
+        </div>
     </div>
         
 </div>
