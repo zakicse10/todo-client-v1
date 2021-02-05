@@ -11,11 +11,17 @@ export class TodoListComponent {
 
     constructor() {
         this.todoItems = new Array();
-        this.addToList('First ToDO!', 'A lot of things to be done!', false);
-        this.addToList('Bootstrap learning', 'Need more knowledge of bootstrap', false);
+        this.addToList2('First ToDO!', 'A lot of things to be done!', false, new Date());
+        this.addToList2('Bootstrap learning', 'Need more knowledge of bootstrap', false, new Date());
+        this.addToList2('PIPE example', 'The AddedOn is formated with PIPEs', false, new Date());
     }
 
-    addToList(title: string, details: string, isDone: boolean): void {
+    addToList2(title: string, details: string, isDone: boolean, addedOn: Date) { 
+        var item = new TodoItem(title, details, isDone, addedOn, null);
+        this.todoItems.push(item)
+    }
+
+    addToList1(title: string, details: string, isDone: boolean) {
         var item = new TodoItem(title, details, isDone, null, null);
         this.todoItems.push(item)
     }
