@@ -1,32 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TodoItemsService } from 'src/app/services/todo-items.service';
 import { TodoItem } from '../../models/TodoItem'; 
 
 @Component({
     selector: 'td-todo-list',
-    templateUrl: './todo-list.component.html'
+    templateUrl: './todo-list.component.html',
+    styleUrls: ['./todo-list.component.css']
 })
-export class TodoListComponent {
+export class TodoListComponent implements OnInit {
 
     todoItems: TodoItem[];
 
-    constructor() {
-        this.todoItems = new Array();
-        this.addToList2('First ToDO!', 'A lot of things to be done!', false, new Date());
-        this.addToList2('Bootstrap learning', 'Need more knowledge of bootstrap', false, new Date());
-        this.addToList2('PIPE example', 'The AddedOn is formated with PIPEs', false, new Date());
+    constructor(private todoService: TodoItemsService) {
     }
 
-    addToList2(title: string, details: string, isDone: boolean, addedOn: Date) { 
-        var item = new TodoItem(title, details, isDone, addedOn, null);
-        this.todoItems.push(item)
+    ngOnInit() {
+        this.todoItems = this.todoService.getTodos();
     }
 
-    addToList1(title: string, details: string, isDone: boolean) {
-        var item = new TodoItem(title, details, isDone, null, null);
-        this.todoItems.push(item)
-    }
-
-    addItemToList(item: TodoItem): void {
-        this.todoItems.push(item);
-    }
 }
