@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router'
 
 import { AppComponent } from './app.component';
 import { TestComponent } from './common/test.component';
@@ -14,7 +15,14 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     AppComponent, TestComponent, TodoListComponent, TodoDetails, TodoAddComponent, WelcomeComponent
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule, FormsModule, 
+    RouterModule.forRoot([
+      { path: 'welcome', component: WelcomeComponent },
+      { path: 'todos', component: TodoListComponent },
+      { path: 'todo/:id', component: TodoDetails},
+      { path: '', redirectTo: 'welcome', pathMatch: 'full'},
+      { path: '**', redirectTo: 'welcome'}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
