@@ -10,6 +10,7 @@ import { TodoItem } from '../../models/TodoItem';
 export class TodoListComponent implements OnInit {
 
     todoItems: TodoItem[];
+    selectedItem: TodoItem;
 
     constructor(private todoService: TodoItemsService) {
     }
@@ -18,4 +19,7 @@ export class TodoListComponent implements OnInit {
         this.todoItems = this.todoService.getTodos();
     }
 
+    selected(todo: TodoItem): void{
+        this.selectedItem = todo;
+    }
 }
