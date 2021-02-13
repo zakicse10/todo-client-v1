@@ -12,8 +12,9 @@ export class TodoDetails implements OnInit {
 
     todo: TodoItem;
 
-    constructor(private activatedRoute : ActivatedRoute, private todoItemService: TodoItemsService) {
-
+    constructor(
+        private activatedRoute : ActivatedRoute, 
+        private todoItemService: TodoItemsService) {
     }
     
     ngOnInit(): void {

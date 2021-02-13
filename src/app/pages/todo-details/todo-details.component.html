@@ -2,11 +2,16 @@
 <div class="container">
     <div class="card">
         <h5 class="card-header bg-primary text-white">
-            {{'ToDo: ' + todo.Title}}
+            {{'Todo No. ' + todo.Id}}
         </h5>
         <div class="card-body">
-            <h5 class="card-title font-weight-bold">{{todo.IsDone ? 'Completed' : 'Pending'}}</h5>
+            <div class="d-flex">
+                <div class="flex-grow-1"><h5 class="card-title ">{{todo.Title}}</h5></div>
+                <div><span class="font-weight-bold">{{todo.IsDone ? 'Completed' : 'Pending'}}</span></div>
+            </div>
             <p class="card-text">{{todo.Description}}</p>
         </div>
     </div>
+    <button class="btn btn-success mt-4" [routerLink]="['/todos']">Back</button>
+
 </div>
