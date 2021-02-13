@@ -11,13 +11,10 @@
                 <div class="col-2"><span class="font-weight-bold">Added on</span></div>
             </div>
             <div class="row p-2 todo-list-item" *ngFor="let item of todoItems" (click)='selected(item)'>
-                <div class="col-2">{{item.Title}}</div>
+                <div class="col-2"><a [routerLink]="['/todo', item.Id]">{{item.Title}}</a></div>
                 <div class="col-6">{{item.Description}}</div>
                 <div class="col-2">{{item.AddedOn | date}}</div>
             </div>
         </div>
     </div>
-</div>
-<div class="lg-col-10" *ngIf='selectedItem'>
-    <td-todo-details [todo]='selectedItem'></td-todo-details>
 </div>
