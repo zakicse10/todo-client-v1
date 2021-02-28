@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router'
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TestComponent } from './common/test.component';
@@ -15,7 +16,7 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     AppComponent, TestComponent, TodoListComponent, TodoDetails, TodoAddComponent, WelcomeComponent
   ],
   imports: [
-    BrowserModule, FormsModule, 
+    BrowserModule, FormsModule,  HttpClientModule,
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
       { path: 'todos', component: TodoListComponent },

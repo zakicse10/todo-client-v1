@@ -1,5 +1,8 @@
-import { Injectable } from '@angular/core'
-import { TodoItem } from '../models/TodoItem'
+import { Injectable } from '@angular/core';
+import { TodoItem } from '../models/TodoItem';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
     providedIn: 'root'
@@ -8,56 +11,35 @@ export class TodoItemsService {
 
     items: TodoItem[];
 
-    public constructor() {
-        this.items = [ 
-            {
-                Id: 1,
-                Title : 'First todo',
-                Description : 'A lot of things to be done yet',
-                IsDone : false,
-                AddedOn : new Date('2020-12-28'),
-                FinishedOn : null
-            },
-            {
-                Id: 2,
-                Title : 'Learn about angular basics',
-                Description : 'Finish the Angular Basic cource by Deborah Kurata',
-                IsDone : false,
-                AddedOn : new Date('2021-2-07'),
-                FinishedOn : null
-            },
-            {
-                Id: 3,
-                Title : 'Creating service and injecting it',
-                Description : 'Learn how to create a service, register it and inject it in the required components',
-                IsDone : true,
-                AddedOn : new Date('2020-12-28'),
-                FinishedOn : new Date('2021-02-07')
-            },
-            {
-                Id: 4,
-                Title : 'Nesting Components',
-                Description : 'Add a TodoItem details component',
-                IsDone : false,
-                AddedOn : new Date('2021-02-07'),
-                FinishedOn : null
-            },
-            {
-                Id: 5,
-                Title : 'Custom pipe',
-                Description : 'Need to create some custom pipes to format the date time',
-                IsDone : false,
-                AddedOn : new Date('2021-2-07'),
-                FinishedOn : null
-            }
-        ];
+    public constructor(public httpClient: HttpClient) {        
     }
 
-    getTodos(): TodoItem[] {
-        return this.items;
+    getCommonHeaders(): HttpHeaders {
+        return new HttpHeaders({
+            "accept": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        });
+    }
+
+    getTodos(): Observable<TodoItem[]> {
+        var url = "https://localhost:44377/api/todos";
+        var result = this.httpClient.get<TodoItem[]>(url);
+        this.populateLocalCache(result);
+        return result;
+    }
+
+    populateLocalCache(result : Observable<TodoItem[]>): void {
+        result.subscribe(itemsCol => {
+            this.items = itemsCol;
+        }, error => {
+            this.items = null;
+        });
     }
 
     getTodoFromId(id: number): TodoItem {
-        return this.items.find(todo => todo.Id == id);
+        if(this.items != null && this.items.length > 1)
+            return this.items.find(todo => todo.Id == id);
+        
+            return new TodoItem();
     }
 }
