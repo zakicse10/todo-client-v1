@@ -9,14 +9,19 @@ import { TodoItem } from '../../models/TodoItem';
 })
 export class TodoListComponent implements OnInit {
 
-    todoItems: TodoItem[];
+    todoItems: any[];
     selectedItem: TodoItem;
 
     constructor(private todoService: TodoItemsService) {
     }
 
     ngOnInit() {
-        this.todoItems = this.todoService.getTodos();
+        this.todoService.getTodos().subscribe(result => {
+            var items = result;
+            this.todoItems = items;
+        }, error => {
+            console.log("Failed to get todo items. Error: " + error)
+        });
     }
 
     selected(todo: TodoItem): void{

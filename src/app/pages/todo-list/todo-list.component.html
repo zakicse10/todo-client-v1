@@ -13,7 +13,7 @@
             <div class="row p-2 todo-list-item" *ngFor="let item of todoItems" (click)='selected(item)'>
                 <div class="col-2"><a [routerLink]="['/todo', item.Id]">{{item.Title}}</a></div>
                 <div class="col-6">{{item.Description}}</div>
-                <div class="col-2">{{item.AddedOn | date}}</div>
+                <div class="col-2">{{item.AddedOnUtc | date}}</div>
             </div>
         </div>
     </div>
