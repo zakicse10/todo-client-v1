@@ -3,7 +3,6 @@ import { TodoItem } from '../models/TodoItem';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-
 @Injectable({
     providedIn: 'root'
 })
@@ -11,7 +10,7 @@ export class TodoItemsService {
 
     items: TodoItem[];
 
-    public constructor(public httpClient: HttpClient) {        
+    public constructor(public httpClient: HttpClient) {
     }
 
     getCommonHeaders(): HttpHeaders {
@@ -28,7 +27,7 @@ export class TodoItemsService {
         return result;
     }
 
-    populateLocalCache(result : Observable<TodoItem[]>): void {
+    populateLocalCache(result: Observable<TodoItem[]>): void {
         result.subscribe(itemsCol => {
             this.items = itemsCol;
         }, error => {
@@ -37,9 +36,9 @@ export class TodoItemsService {
     }
 
     getTodoFromId(id: number): TodoItem {
-        if(this.items != null && this.items.length > 1)
+        if (this.items != null && this.items.length > 1)
             return this.items.find(todo => todo.Id == id);
-        
-            return new TodoItem();
+
+        return new TodoItem();
     }
 }
