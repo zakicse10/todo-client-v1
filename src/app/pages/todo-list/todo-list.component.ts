@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoItemsService } from 'src/app/services/todo-items.service';
-import { TodoItem } from '../../models/TodoItem'; 
+import { TodoItem } from '../../models/TodoItem';
 
 @Component({
     selector: 'td-todo-list',
@@ -16,7 +16,7 @@ export class TodoListComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.todoService.getTodos().subscribe(result => {
+        this.todoService.getFakeTodos().subscribe(result => {
             var items = result;
             this.todoItems = items;
         }, error => {
@@ -24,7 +24,7 @@ export class TodoListComponent implements OnInit {
         });
     }
 
-    selected(todo: TodoItem): void{
+    selected(todo: TodoItem): void {
         this.selectedItem = todo;
     }
 }
