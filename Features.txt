@@ -1,0 +1,4 @@
+
+1. add localStorage support
+2. remove bootstrap and use angular flex layout and material design
+3. create a generic service that converts JSON data to objects (single and list)
