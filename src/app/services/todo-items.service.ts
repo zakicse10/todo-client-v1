@@ -67,6 +67,8 @@ export class TodoItemsService {
             IsDone: false
         }]
 
-        return of(todoitems);
+        var result = of(todoitems);
+        this.populateLocalCache(result);
+        return result;
     }
 }
