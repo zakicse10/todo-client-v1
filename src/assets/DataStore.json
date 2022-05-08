@@ -1,0 +1,26 @@
+[
+    {
+        "Id": 1,
+        "Title": "Need to learn Javascript properly",
+        "Description": "Finish the Udemy course and complete the sample projects. Then make something yourself",
+        "AddedOnUtc": "2022-06-21",
+        "FinishedOnUtc": "2022-06-21",
+        "IsDone": false
+    },
+    {
+        "Id": 2,
+        "Title": "Need to learn Angular",
+        "Description": "FInish the PluralSight course, then go through the Udemy course for more details. Create the PokerFace project. Find weak spots.",
+        "AddedOnUtc": "2022-03-21",
+        "FinishedOnUtc": "2022-05-12",
+        "IsDone": false
+    },
+    {
+        "Id": 3,
+        "Title": "Learn about Angular RxJS",
+        "Description": "COmplete the course for Angular RxJS library from PluralSight",
+        "AddedOnUtc": "2022-03-21",
+        "FinishedOnUtc": "2022-05-12",
+        "IsDone": false
+    }
+]
