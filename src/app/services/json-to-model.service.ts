@@ -9,7 +9,7 @@ export class JsonToModelService {
   constructor() {
   }
 
-  convertTodo(jsonObj: string): TodoItem {
+  convertTodo(jsonObj: any): TodoItem {
     let todo = new TodoItem({});
     if (typeof jsonObj != 'object') {
       jsonObj = JSON.parse(jsonObj);
