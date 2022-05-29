@@ -16,13 +16,14 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     AppComponent, TestComponent, TodoListComponent, TodoDetails, TodoAddComponent, WelcomeComponent
   ],
   imports: [
-    BrowserModule, FormsModule,  HttpClientModule,
+    BrowserModule, FormsModule, HttpClientModule,
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
       { path: 'todos', component: TodoListComponent },
-      { path: 'todo/:id', component: TodoDetails},
-      { path: '', redirectTo: 'welcome', pathMatch: 'full'},
-      { path: '**', redirectTo: 'welcome'}
+      { path: 'todo-add', component: TodoAddComponent },
+      { path: 'todo/:id', component: TodoDetails },
+      { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+      { path: '**', redirectTo: 'welcome' }
     ])
   ],
   providers: [],
