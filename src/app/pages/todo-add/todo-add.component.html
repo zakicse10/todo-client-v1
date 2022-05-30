@@ -1,1 +1,25 @@
-<p>todo-add works!</p>
+<div class="container todo-add">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            <h5>Add a new todo!</h5>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm)">
+                <p>Give a title and a description for your todo</p>
+
+                <div class="form-group">
+                    <label for="inputTitle">Title: </label>
+                    <input type="text" id="inputTitle" name="title" class="form-control" formControlName="title">
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Add details:</label>
+                    <textarea class="form-control todo-details" formControlName="description"
+                        id="description"></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
