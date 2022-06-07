@@ -5,20 +5,34 @@
         </div>
         <div class="card-body">
             <form [formGroup]="addForm" (ngSubmit)="onSubmit(addForm)">
-                <p>Give a title and a description for your todo</p>
+                <p>Give a title and a description for your todo. {{message}}</p>
 
                 <div class="form-group">
                     <label for="inputTitle">Title: </label>
                     <input type="text" id="inputTitle" name="title" class="form-control" formControlName="title">
+                    <span class="error" *ngIf="addForm.controls.title.dirty && 
+                    addForm.controls.title.errors?.required">
+                        Title is required</span>
                 </div>
 
                 <div class="form-group">
                     <label for="description">Add details:</label>
                     <textarea class="form-control todo-details" formControlName="description"
                         id="description"></textarea>
+                    <span class="error" *ngIf="addForm.controls.description.dirty && 
+                    addForm.controls.description.errors?.required">
+                        Description is required</span>
+                    <span class="error" *ngIf="addForm.controls.description.dirty && 
+                    addForm.controls.description.errors?.minlength">
+                        Description is too short</span>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Save</button>
+                <span *ngIf="message">{{message}}</span>
+                <br />
+
+                <!-- disabled="addForm.status==='INVALID'" -->
+                <button type="button" class="btn btn-primary" (click)="check()">Check</button>
+                <button type="submit" class="btn btn-primary" [disabled]="addForm.invalid">Save</button>
             </form>
         </div>
     </div>

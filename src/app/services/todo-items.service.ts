@@ -21,9 +21,14 @@ export class TodoItemsService {
         private localStorageService: LocalStorageService) {
     }
 
+    public addTodo(todo: TodoItem): Observable<TodoItem> {
+        let url = config.apiServerUrl + 'api/Todos';
+        return this.httpClient.post<TodoItem>(url, todo);
+    }
+
     private getCommonHeaders(): HttpHeaders {
         return new HttpHeaders({
-            "accept": "application/json",
+            "Content-type": "application/json",
             "Access-Control-Allow-Origin": "*"
         });
     }

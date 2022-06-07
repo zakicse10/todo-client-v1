@@ -1,3 +1,7 @@
 .todo-details {
     height: 250px;
 }
+
+.error {
+    color: red;
+}
