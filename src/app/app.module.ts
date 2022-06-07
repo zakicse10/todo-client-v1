@@ -3,6 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router'
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component';
 import { TestComponent } from './common/test.component';
@@ -16,7 +18,8 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     AppComponent, TestComponent, TodoListComponent, TodoDetails, TodoAddComponent, WelcomeComponent
   ],
   imports: [
-    BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule,
+    BrowserModule, FormsModule, ReactiveFormsModule, HttpClientModule, BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
       { path: 'todos', component: TodoListComponent },
