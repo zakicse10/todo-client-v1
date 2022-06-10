@@ -18,7 +18,7 @@ export class TodoListComponent implements OnInit {
 
     ngOnInit() {
         this.route.data.subscribe((data: any) => {
-            console.log('Route data:' + JSON.stringify(data));
+            // console.log('Route data:' + JSON.stringify(data));
             this.todoItems = data.todolist;
         });
     }
