@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { TodoItemsService } from 'src/app/services/todo-items.service';
 import { TodoItem } from '../../models/TodoItem';
 
@@ -12,15 +13,13 @@ export class TodoListComponent implements OnInit {
     todoItems: any[];
     selectedItem: TodoItem;
 
-    constructor(private todoService: TodoItemsService) {
+    constructor(private route: ActivatedRoute) {
     }
 
     ngOnInit() {
-        this.todoService.getTodos().subscribe(result => {
-            var items = result;
-            this.todoItems = items;
-        }, error => {
-            console.log("Failed to get todo items. Error: " + error)
+        this.route.data.subscribe((data: any) => {
+            console.log('Route data:' + JSON.stringify(data));
+            this.todoItems = data.todolist;
         });
     }
 

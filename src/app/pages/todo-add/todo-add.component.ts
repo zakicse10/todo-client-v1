@@ -41,6 +41,7 @@ export class TodoAddComponent implements OnInit, OnDestroy {
       .subscribe(
         () => {
           this.addForm.setValue({ title: '', description: '' });
+          this.addForm.markAsPristine();
           this.toastr.success('Added successfully!');
         },
         (err) => {

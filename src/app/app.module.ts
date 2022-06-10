@@ -12,6 +12,7 @@ import { TodoListComponent } from './pages/todo-list/todo-list.component';
 import { TodoDetails } from './pages/todo-details/todo-details.component';
 import { TodoAddComponent } from './pages/todo-add/todo-add.component';
 import { WelcomeComponent } from './pages/welcome/welcome.component';
+import { TodoListDataResolver } from './resolvers/todo-list-data.resolver';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,13 @@ import { WelcomeComponent } from './pages/welcome/welcome.component';
     ToastrModule.forRoot(),
     RouterModule.forRoot([
       { path: 'welcome', component: WelcomeComponent },
-      { path: 'todos', component: TodoListComponent },
+      {
+        path: 'todos',
+        component: TodoListComponent,
+        resolve: {
+          todolist: TodoListDataResolver
+        }
+      },
       { path: 'todo-add', component: TodoAddComponent },
       { path: 'todo/:id', component: TodoDetails },
       { path: '', redirectTo: 'welcome', pathMatch: 'full' },
